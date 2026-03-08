@@ -1,3 +1,4 @@
+```yaml
 name: Build
 on: [push, workflow_dispatch]
 jobs:
@@ -9,8 +10,9 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-      - run: ./gradlew shadowJar -x test --no-daemon
+      - run: chmod +x gradlew && ./gradlew shadowJar -x test --no-daemon
       - uses: actions/upload-artifact@v4
         with:
           name: UnlimitedNametags
           path: build/libs/*.jar
+```
